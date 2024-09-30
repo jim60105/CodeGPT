@@ -160,7 +160,7 @@ var commitCmd = &cobra.Command{
 			out, err := util.GetTemplateByString(
 				prompt.SummarizeTitleTemplate,
 				util.Data{
-					"summary_points": data[prompt.SummarizeMessageKey],
+					"file_diffs": diff,
 				},
 			)
 			if err != nil {
@@ -189,6 +189,7 @@ var commitCmd = &cobra.Command{
 				prompt.ConventionalCommitTemplate,
 				util.Data{
 					"summary_points": data[prompt.SummarizeMessageKey],
+					"summary_title":  data[prompt.SummarizeTitleKey],
 				},
 			)
 			if err != nil {

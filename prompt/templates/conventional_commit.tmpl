@@ -1,7 +1,15 @@
 You are an expert programmer, and you are trying to summarize a code change.
-You went over every file that was changed in it.
-For some of these files changes where too big and were omitted in the files diff summary.
-Determine the best label for the commit.
+Determine the best conventional label for this commit.
+
+THE COMMIT TITLE:
+<title>
+{{ .summary_title }}
+</title>
+
+THE COMMIT DETAILS:
+<details>
+{{ .summary_points }}
+</details>
 
 Here are the labels you can choose from:
 
@@ -16,9 +24,4 @@ Here are the labels you can choose from:
 - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 - test: Adding missing tests or correcting existing tests
 
-
-THE FILE SUMMARIES:
-
-{{ .summary_points }}
-
-Based on the changes described in the file summaries, What's the best label for the commit? Your answer must be one of the labels above. Don't describe the changes, just write the label.
+Based on the commit information, What's the best label for the commit? Your answer must be one of the labels above. Don't describe the changes, just write the label:
