@@ -179,8 +179,9 @@ var commitCmd = &cobra.Command{
 				", TotalTokens: " + strconv.Itoa(resp.Usage.TotalTokens),
 			)
 
-			// lowercase the first character of first word of the commit message and remove last period
-			summarizeTitle = strings.TrimRight(strings.ToLower(string(summarizeTitle[0]))+summarizeTitle[1:], ".")
+			summarizeTitle = strings.Trim(summarizeTitle, "\"")
+			summarizeTitle = strings.ToLower(string(summarizeTitle[0])) + summarizeTitle[1:]
+			summarizeTitle = strings.TrimRight(summarizeTitle, ".")
 			data[prompt.SummarizeTitleKey] = strings.TrimSpace(summarizeTitle)
 		}
 
