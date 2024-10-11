@@ -28,7 +28,7 @@ jobs:
           file: ./Dockerfile
           target: binary
           platforms: linux/amd64
-          outputs: type=local,dest=/artifacts/amd64
+          outputs: type=local,dest=artifacts/amd64
 
       - name: Build arm64
         uses: docker/build-push-action@v5
@@ -37,10 +37,10 @@ jobs:
           file: ./Dockerfile
           target: binary
           platforms: linux/arm64
-          outputs: type=local,dest=/artifacts/arm64
+          outputs: type=local,dest=artifacts/arm64
 
       - name: Output artifact
         uses: actions/upload-artifact@v4
         with:
           name: linux
-          path: /artifacts
+          path: artifacts
