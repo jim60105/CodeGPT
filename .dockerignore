@@ -1,0 +1,13 @@
+**/*.md
+**/.hadolint.yml
+**/node_modules
+**/*.log
+**/.git
+**/.gitignore
+**/.env
+**/.github
+**/.vscode
+**/bin
+**/obj
+**/dist
+**/artifacts

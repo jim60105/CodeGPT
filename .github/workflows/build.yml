@@ -5,6 +5,9 @@ on:
     branches:
       - my-edit
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
   build-exe:
     runs-on: ubuntu-latest
