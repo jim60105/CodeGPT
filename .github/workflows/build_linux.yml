@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker:
+  docker-amd64:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,7 +28,25 @@ jobs:
           file: ./Dockerfile
           target: binary
           platforms: linux/amd64
-          outputs: type=local,dest=artifacts/amd64
+          outputs: type=local,dest=artifacts
+
+      - name: Output artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: amd64
+          path: artifacts
+
+  docker-arm64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Build arm64
         uses: docker/build-push-action@v5
@@ -37,10 +55,10 @@ jobs:
           file: ./Dockerfile
           target: binary
           platforms: linux/arm64
-          outputs: type=local,dest=artifacts/arm64
+          outputs: type=local,dest=artifacts
 
       - name: Output artifact
         uses: actions/upload-artifact@v4
         with:
-          name: linux
+          name: arm64
           path: artifacts
