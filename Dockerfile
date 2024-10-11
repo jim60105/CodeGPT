@@ -19,7 +19,7 @@ RUN --mount=source=.,target=.,rw \
 ########################################
 # Compress stage
 ########################################
-FROM debian:bookworm-slim AS compress
+FROM --platform=${BUILDPLATFORM:-linux/amd64} debian:bookworm-slim AS compress
 
 # RUN mount cache for multi-arch: https://github.com/docker/buildx/issues/549#issuecomment-1788297892
 ARG TARGETARCH
